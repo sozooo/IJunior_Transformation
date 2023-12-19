@@ -8,14 +8,14 @@ public class SphereMoveScript : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(SphereMove(_speed));
+        StartCoroutine(SphereMove());
     }
 
-    private IEnumerator SphereMove(float speed)
+    private IEnumerator SphereMove()
     {
         while(_isON)
         {
-            transform.position += transform.forward * speed * Time.deltaTime;
+            transform.position += transform.forward * _speed * Time.deltaTime;
 
             yield return null;
         }
