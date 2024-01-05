@@ -1,15 +1,11 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class CubeAbsoluteScript : MonoBehaviour
+public class CubeAbsoluteScript : ObjectClass
 {
-    [SerializeField] private float _speed;
-    [SerializeField] private bool _isON;
+    private float _fullRotate = 360.0f;
 
-    private float _rotateStep = -30.0f;
-
-    void Start()
+    private void Start()
     {
         StartCoroutine(CubeAbsolute());
     }
@@ -19,12 +15,12 @@ public class CubeAbsoluteScript : MonoBehaviour
         Vector3 startScale = transform.localScale;
         float scaleModifier = 1;
 
-        while (_isON)
+        while (IsOn)
         {
-            scaleModifier += _speed * Time.deltaTime;
+            scaleModifier += Speed * Time.deltaTime;
             transform.localScale = startScale * scaleModifier;
-            transform.Rotate(_rotateStep * _speed * Time.deltaTime, 0, 0, Space.Self);
-            transform.position += transform.forward * _speed * Time.deltaTime;
+            transform.Rotate(0, _fullRotate * Speed * Time.deltaTime, 0, Space.Self);
+            transform.position += transform.forward * Speed * Time.deltaTime;
 
             yield return null;
         }

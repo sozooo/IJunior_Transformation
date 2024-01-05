@@ -1,12 +1,9 @@
 using System.Collections;
 using UnityEngine;
 
-public class CapsuleScaling : MonoBehaviour
+public class CapsuleScaling : ObjectClass
 {
-    [SerializeField] private float _speed;
-    [SerializeField] private bool _isON;
-
-    void Start()
+    private void Start()
     {
         StartCoroutine(SphereMove());
     }
@@ -16,9 +13,9 @@ public class CapsuleScaling : MonoBehaviour
         Vector3 startScale = transform.localScale;
         float scaleModifier = 1;
 
-        while (_isON)
+        while (IsOn)
         {
-            scaleModifier += _speed * Time.deltaTime;
+            scaleModifier += Speed * Time.deltaTime;
             transform.localScale = startScale * scaleModifier;
 
             yield return null;

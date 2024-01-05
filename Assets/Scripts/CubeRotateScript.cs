@@ -1,23 +1,20 @@
 using System.Collections;
 using UnityEngine;
 
-public class CubeRotateScript : MonoBehaviour
+public class CubeRotateScript : ObjectClass
 {
-    [SerializeField] private float _speed;
-    [SerializeField] private bool _isON;
-
     private float _fullRotate = 360.0f;
 
-    void Start()
+    private void Start()
     {
         StartCoroutine(CubeRotate());
     }
 
     private IEnumerator CubeRotate()
     {
-        while (_isON)
+        while (IsOn)
         {
-            transform.Rotate(0, _fullRotate * _speed * Time.deltaTime, 0, Space.Self);
+            transform.Rotate(0, _fullRotate * Speed * Time.deltaTime, 0, Space.Self);
 
             yield return null;
         }

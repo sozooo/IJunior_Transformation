@@ -1,21 +1,18 @@
 using System.Collections;
 using UnityEngine;
 
-public class SphereMoveScript : MonoBehaviour
+public class SphereMoveScript : ObjectClass
 {
-    [SerializeField] private float _speed;
-    [SerializeField] private bool _isON;
-
-    void Start()
+    private void Start()
     {
         StartCoroutine(SphereMove());
     }
 
     private IEnumerator SphereMove()
     {
-        while(_isON)
+        while(IsOn)
         {
-            transform.position += transform.forward * _speed * Time.deltaTime;
+            transform.position += transform.forward * Speed * Time.deltaTime;
 
             yield return null;
         }
